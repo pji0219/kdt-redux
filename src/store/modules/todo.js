@@ -19,6 +19,10 @@ const initState = {
   ],
 };
 
+// 다음 id
+let counts = initState.list.length;
+initState['nextID'] = counts;
+
 // 액션 타입 정의 하기
 const CREATE = 'todo/CREATE';
 const DONE = 'todo/DONE';
@@ -48,6 +52,7 @@ export default function todo(state = initState, action) {
           text: action.payload.text,
           done: false,
         }),
+        nextID: action.payload.id + 1,
       };
     case DONE:
       return {

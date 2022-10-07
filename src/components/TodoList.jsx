@@ -6,6 +6,7 @@ function TodoList() {
   const list = useSelector((state) => state.todo.list).filter(
     (el) => el.done === false
   );
+  const nextID = useSelector((state) => state.todo.nextID);
   const inputRef = useRef();
   const dispatch = useDispatch();
 
@@ -18,7 +19,7 @@ function TodoList() {
           onClick={() => {
             dispatch(
               create({
-                id: list.length,
+                id: nextID,
                 text: inputRef.current.value,
                 done: false,
               })
